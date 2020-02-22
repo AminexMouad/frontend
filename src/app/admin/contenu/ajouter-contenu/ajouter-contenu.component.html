@@ -1,0 +1,43 @@
+<div class="custom-container">
+  <div class="return-btn-style" [routerLink]="['/contenu']">
+    <i class="fas fa-arrow-left"></i> Retour
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        Ajouter un contenu
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="titre"> Titre du contenu :</label>
+            <input type="text" id="titre" class="form-control" [(ngModel)]="contenu.titre" name="titre">
+          </div>
+          <div class="form-group">
+            <div class="form-group" *ngIf="blocs">
+              <label for="exampleFormControlSelect1">Type du bloc :</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="bloc" [(ngModel)]="contenu.bloc.id">
+                <option value="" selected disabled hidden>Choisir le type</option>
+                <option *ngFor="let bloc of blocs._embedded.blocs" value="{{bloc.id}}">{{bloc.nom}}</option>
+              </select>
+            </div>
+          </div>
+          <div [formGroup]="uploadForm">
+            <div class="form-group">
+              <label for="image"> Image du contenu :</label>
+              <input type="file" name="img" id="image" (change)="test($event)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description :</label>
+            <ckeditor [editor]="Editor" name="description" [(ngModel)]="contenu.description"></ckeditor>
+          </div>
+          <div style="display: flex;justify-content: flex-end;">
+            <button type="submit" class="btn btn-success">Ajouter Contenu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

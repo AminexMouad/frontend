@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div class="article-img" [style.background-image]="image">
+</div>
+<div class="custom-container" *ngIf="contenu">
+  <h1>{{contenu.titre}}</h1>
+  <div [innerHTML]="contenu.description"></div>
+</div>

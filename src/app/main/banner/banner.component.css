@@ -1,0 +1,63 @@
+.banner {
+  background-image: url('../../../assets/banner.jpg');
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  position: relative;
+}
+
+.absolute-text {
+  position: absolute;
+  top: 25%;
+  left: 7%;
+  width: 45%;
+}
+
+.absolute-text h5 {
+  background-color: red;
+  color: white;
+  width: fit-content;
+  padding: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.absolute-text h1 {
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 700;
+  background-color: black;
+  color: white;
+  width: fit-content;
+  padding: 3px;
+}
+
+.absolute-text span {
+  background-color: white;
+  color: black;
+  width: fit-content;
+  padding: 3px;
+}
+
+.btn-container {
+  display: flex;
+  padding: 15px 0;
+  justify-content: center;
+}
+
+.banner-btn {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
+  text-transform: uppercase;
+  /* border-radius: 5px; */
+  padding: 2px 5px 0 5px;
+  font-size: 1.2rem;
+}
+
+.banner-btn:hover {
+  background-color: white;
+  color: red;
+}

@@ -1,0 +1,155 @@
+<div class="custom-container">
+  <div class="return-btn-style" [routerLink]="['/admin']">
+    <i class="fas fa-arrow-left"></i> Retour au dashboard
+  </div>
+
+  <app-sidebar></app-sidebar>
+
+
+  <div class="container">
+    <!-- <h1>Gestionnaire de bloc</h1> -->
+    <div class="card">
+      <div class="card-header" style="font-weight: bold; font-size: 1.2rem;">
+        Gestionnaire de bloc
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary" style="margin: 7px 0;" data-toggle="modal"
+          data-target="#exampleModal"> <i class="fas fa-plus"></i> Nouveau bloc</button>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Ordre</th>
+              <th scope="col">Activer</th>
+              <th scope="col">Date creation</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="blocs">
+            <tr *ngFor="let bloc of blocs._embedded.blocs">
+              <td scope="row">{{bloc.nom}}</td>
+              <td scope="row">{{bloc.ordre}}</td>
+              <td scope="row">
+                <span class="activer" *ngIf="bloc.activer == 1"><i class="fas fa-check"></i></span>
+                <span class="desactiver" *ngIf="bloc.activer == 0"><i class="fas fa-times"></i></span>
+              </td>
+              <td scope="row">{{bloc.dateCreation |date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal2"
+                  (click)="selectBloc(bloc)"><i class="fas fa-edit"></i> Update</button>
+                <button type="button" (click)="supprimerBloc(bloc)" class="btn btn-danger btn-sm"
+                  style="margin-left: 10px;"><i class="far fa-trash-alt"></i> Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" *ngIf="currentBloc" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="update"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="currentBloc">
+      <form (ngSubmit)="modifierBloc(form)" #form="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modification du bloc {{currentBloc.nom}} </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nom"> Nom du bloc :</label>
+            <input type="text" id="nom" class="form-control" name="nom" [(ngModel)]="currentBloc.nom">
+          </div>
+          <div class="form-group">
+            <label for="ordre">Placement du bloc:</label>
+            <input type="number" id="ordre" class="form-control" name="ordre" [(ngModel)]="currentBloc.ordre">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <label for="x">Visibilite</label>
+            <div style="display: flex;">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="activer" id="exampleRadios2" value="1"
+                  [checked]='currentBloc.activer' ngModel>
+                <label class="form-check-label" for="exampleRadios2">
+                  Oui
+                </label>
+              </div>
+              <div class="form-check" style="margin-left: 5px;">
+                <input class="form-check-input" type="radio" name="activer" id="exampleRadios1" value="0"
+                  [checked]='!currentBloc.activer' ngModel>
+                <label class="form-check-label" for="exampleRadios1">
+                  Non
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Modifier Bloc</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form (ngSubmit)="ajouterBloc(form)" #form="ngForm">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nouveau Bloc</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nom"> Nom du bloc :</label>
+            <input type="text" id="nom" class="form-control" ngModel name="nom">
+          </div>
+          <div class="form-group">
+            <label for="ordre">Placement du bloc:</label>
+            <input type="number" id="ordre" class="form-control" ngModel name="ordre">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <label for="x">Visibilite</label>
+            <div style="display: flex;">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="activer" id="exampleRadios2" value="true" ngModel>
+                <label class="form-check-label" for="exampleRadios2">
+                  Oui
+                </label>
+              </div>
+              <div class="form-check" style="margin-left: 5px;">
+                <input class="form-check-input" type="radio" name="activer" id="exampleRadios1" value="false" ngModel>
+                <label class="form-check-label" for="exampleRadios1">
+                  Non
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label for="date">Date creation : </label>
+
+            <span style="color: #858585;"> {{currentDate}}</span>
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Ajouter Bloc</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

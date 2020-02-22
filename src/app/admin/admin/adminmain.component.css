@@ -1,0 +1,25 @@
+.custom-card {
+  background-color: #0984e3;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 11px;
+  box-shadow: 2px 4px 4px 0px #b9b9b9;
+  margin: 10px;
+}
+
+.custom-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.custom-container {
+  flex-direction: column;
+  margin: 10px 5%;
+}

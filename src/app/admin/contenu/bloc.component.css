@@ -1,0 +1,15 @@
+.activer {
+  background-color: #2ecc71;
+  padding: 2px 5px;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+}
+
+.desactiver {
+  background-color: red;
+  padding: 2px 7px;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+}

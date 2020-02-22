@@ -1,0 +1,11 @@
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 250px;
+}
+
+input[type="file"] {
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.65);
+  display: block;
+  width: 100%;
+}

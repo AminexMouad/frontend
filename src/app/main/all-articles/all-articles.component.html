@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container" *ngIf="blocs">
+  <h2>Tout les {{blocs[0].bloc.nom}} : </h2>
+
+  <div class="bloc-container">
+    <div *ngFor="let bloc of blocs">
+      <div class="card" style="width: 18rem;">
+        <img src="{{bloc.imageUrl}}" class="card-img-top" alt="{{bloc.titre}}">
+        <div class="card-body">
+          <h5 class="card-title">{{bloc.titre}}</h5>
+          <p class="card-text" [innerHTML]="bloc.description"></p>
+          <div class="footer-card">
+            <div class="btnbtn">
+              <a [routerLink]="['/article/',bloc.id]" class="custom-btn">read more <i
+                  class="fas fa-caret-right"></i></a>
+            </div>
+            <div class="date">
+              <span>{{bloc.dateCreation | date :'short'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

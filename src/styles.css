@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+.custom-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.return-btn-style {
+  padding: 15px;
+  font-weight: bold;
+  color: #5352ed;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+
+.activee {
+  color: #fff;
+}
+
+.activee:hover {
+  color: #fff;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+td,
+th {
+  text-align: center !important;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #FAFAFA !important;
+}

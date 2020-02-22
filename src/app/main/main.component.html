@@ -1,0 +1,39 @@
+<app-header></app-header>
+<app-banner></app-banner>
+<div class="container" *ngIf="blocs">
+  <div *ngFor="let bloc of blocs">
+    <div *ngIf="bloc.activer">
+      <div>
+        <h2>{{bloc.nom}} :</h2>
+      </div>
+
+      <div class="bloc-container">
+        <div *ngFor="let contenu of bloc.contenus;index as i">
+          <div *ngIf="i<=2 ">
+            <div class="card" style="width: 18rem;">
+              <img src="{{contenu.imageUrl}}" class="card-img-top" alt="{{contenu.titre}}">
+              <div class="card-body">
+                <h5 class="card-title">{{contenu.titre}}</h5>
+                <p class="card-text" [innerHTML]="contenu.description"></p>
+                <div class="footer-card">
+                  <div class="btnbtn">
+                    <a [routerLink]="['/article/',contenu.id]" class="custom-btn">read more <i
+                        class="fas fa-caret-right"></i></a>
+                  </div>
+                  <div class="date">
+                    <span>{{contenu.dateCreation | date :'short'}}</span>
+                  </div>
+                </div>
+              </div>
+              <!-- <div [innerHTML]="contenu.description"></div> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="bloc-container-footer" *ngIf="bloc.activer">
+        <a [routerLink]="['/allarticles/',bloc.id]">Afficher tout les {{bloc.nom}} <i
+            class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </div>

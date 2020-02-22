@@ -1,0 +1,23 @@
+.article-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 80%;
+  height: 400px;
+  position: relative;
+}
+
+.custom-container {
+  /* width: 992px; */
+  margin: 0 10%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: white;
+  position: absolute;
+  top: 42%;
+  padding: 20px;
+}
+
+blockquote p {
+  color: #7e7e7e !important;
+  font-family: 'Krona One' !important;
+}
